@@ -2,20 +2,30 @@ import { Component } from '@angular/core';
 
 import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
 
-interface DataItem {
-  name: string;
-  age: number;
-  address: string;
+// interface DataItem {
+//   name: string;
+//   age: number;
+//   address: string;
+// }
+
+interface TransactionsItem {
+  gender: string;
+  category: string;
+  merchant: string;
+  city: string;
+  state: string;
+  population: number;
+  amount: number;
 }
 
 interface ColumnItem {
   name: string;
-  sortOrder: NzTableSortOrder | null;
-  sortFn: NzTableSortFn<DataItem> | null;
-  listOfFilter: NzTableFilterList;
-  filterFn: NzTableFilterFn<DataItem> | null;
-  filterMultiple: boolean;
-  sortDirections: NzTableSortOrder[];
+  // sortOrder: NzTableSortOrder | null;
+  // sortFn: NzTableSortFn<TransactionsItem> | null;
+  // listOfFilter: NzTableFilterList;
+  // filterFn: NzTableFilterFn<TransactionsItem> | null;
+  // filterMultiple: boolean;
+  // sortDirections: NzTableSortOrder[];
 }
 
 @Component({
@@ -24,61 +34,82 @@ interface ColumnItem {
   styleUrls: ['./data-display.component.css']
 })
 export class DataDisplayComponent {
-  listOfColumns: ColumnItem[] = [
+  
+  listOfColumn: ColumnItem[] = [
     {
-      name: 'Name',
-      sortOrder: null,
-      sortFn: (a: DataItem, b: DataItem) => a.name.localeCompare(b.name),
-      sortDirections: ['ascend', 'descend', null],
-      filterMultiple: true,
-      listOfFilter: [
-        { text: 'Joe', value: 'Joe' },
-        { text: 'Jim', value: 'Jim', byDefault: true }
-      ],
-      filterFn: (list: string[], item: DataItem) => list.some(name => item.name.indexOf(name) !== -1)
+      name: 'Gender'
+      // sortOrder: null,
+      // sortFn: (a: TransactionsItem, b: TransactionsItem) => a.gender.localeCompare(b.gender),
+      // sortDirections: ['ascend', 'descend', null],
+      // filterMultiple: true,
+      // listOfFilter: [
+      //   { text: 'Joe', value: 'Joe' },
+      //   { text: 'Jim', value: 'Jim', byDefault: true }
+      // ],
+      // filterFn: (list: string[], item: TransactionsItem) => list.some(name => item.gender.indexOf(gender) !== -1)
     },
     {
-      name: 'Age',
-      sortOrder: 'descend',
-      sortFn: (a: DataItem, b: DataItem) => a.age - b.age,
-      sortDirections: ['descend', null],
-      listOfFilter: [],
-      filterFn: null,
-      filterMultiple: true
+      name: 'category',
+      // sortOrder: 'descend',
+      // sortFn: (a: TransactionsItem, b: TransactionsItem) => a.age - b.age,
+      // sortDirections: ['descend', null],
+      // listOfFilter: [],
+      // filterFn: null,
+      // filterMultiple: true
     },
     {
-      name: 'Address',
-      sortOrder: null,
-      sortDirections: ['ascend', 'descend', null],
-      sortFn: (a: DataItem, b: DataItem) => a.address.length - b.address.length,
-      filterMultiple: false,
-      listOfFilter: [
-        { text: 'London', value: 'London' },
-        { text: 'Sidney', value: 'Sidney' }
-      ],
-      filterFn: (address: string, item: DataItem) => item.address.indexOf(address) !== -1
-    }
+      name: 'merchant',
+      // sortOrder: null,
+      // sortDirections: ['ascend', 'descend', null],
+      // sortFn: (a: DataItem, b: DataItem) => a.address.length - b.address.length,
+      // filterMultiple: false,
+      // listOfFilter: [
+      //   { text: 'London', value: 'London' },
+      //   { text: 'Sidney', value: 'Sidney' }
+      // ],
+      // filterFn: (address: string, item: DataItem) => item.address.indexOf(address) !== -1
+    },
+    {name: 'city'},
+    {name: 'state'},
+    {name: 'population'},
+    {name: 'amount'}
   ];
-  listOfData: DataItem[] = [
+  listOfData: TransactionsItem[] = [
     {
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park'
+      gender: "F",
+      category: "entertainment",
+      merchant: "Abbott-Rogan",
+      city: "sh",
+      state: "OK",
+      population: 100,
+      amount: 100,
     },
     {
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park'
+      gender: "F",
+      category: "entertainment",
+      merchant: "Abbott-Rogan",
+      city: "sh",
+      state: "OK",
+      population: 100,
+      amount: 100,
     },
     {
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park'
+      gender: "F",
+      category: "entertainment",
+      merchant: "Abbott-Rogan",
+      city: "sh",
+      state: "OK",
+      population: 100,
+      amount: 100,
     },
     {
-      name: 'Jim Red',
-      age: 32,
-      address: 'London No. 2 Lake Park'
+      gender: "F",
+      category: "entertainment",
+      merchant: "Abbott-Rogan",
+      city: "sh",
+      state: "OK",
+      population: 100,
+      amount: 100,
     }
   ];
 }

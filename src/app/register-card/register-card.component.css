@@ -9,3 +9,9 @@
 .register-are {
   margin-bottom: 8px;
 }
+
+.customer-register {
+  margin-left: 50%;
+  margin-top: 100px;
+  transform: translate(-50%, 0);
+}

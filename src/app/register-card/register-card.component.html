@@ -1,4 +1,14 @@
-<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+<nz-page-header
+  class="site-page-header"
+  nzTitle="Register"
+  nzSubtitle="Please type your relevant informations"
+></nz-page-header>
+<form
+  nz-form
+  [formGroup]="validateForm"
+  (ngSubmit)="submitForm()"
+  class="customer-register"
+>
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email"
       >E-mail</nz-form-label
