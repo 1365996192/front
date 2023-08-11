@@ -1,17 +1,28 @@
+//传给后端的数据
 export interface TransactionsItem {
     gender: string;
     category: string;
     merchant: string;
     city: string;
     state: string;
-    population: number;
-    amount: number;
-    // trans_time:string;
-    // trans_num:number;
-    // first_name:string;
-    // last_name:string;
-    // job:string;
-    // dob:string
+    job:string;
+    amount:number
+  }
+
+  export interface TransactionsItemAll {
+    gender: string;
+    category: string;
+    merchant: string;
+    city: string;
+    state: string;
+    population:number;
+    amount:number
+    trans_time:string;
+    trans_num:number;
+    first_name:string;
+    last_name:string;
+    job:string;
+    dob:string
   }
 
 export  interface ColumnItem {

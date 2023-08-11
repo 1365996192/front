@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { TransactionsItem } from '../ulities/module'
+import { TransactionsItem, TransactionsItemAll } from '../ulities/module'
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { transition } from '@angular/animations';
 
@@ -21,7 +21,7 @@ import { transition } from '@angular/animations';
 
 //假数据
 export class DataService implements InMemoryDbService {
-  private transactions : TransactionsItem[] = [
+  private transactions : TransactionsItemAll[] = [
     {
       gender: "F",
       category: "entertainment",
@@ -29,7 +29,13 @@ export class DataService implements InMemoryDbService {
       city: "sh",
       state: "OK",
       population: 100,
-      amount: 100,
+      amount: 1,
+      trans_time:'1',
+      trans_num:1,
+      first_name:'string',
+      last_name:'string',
+      job:'string',
+      dob:'string'
     },
     {
       gender: "M",
@@ -38,7 +44,13 @@ export class DataService implements InMemoryDbService {
       city: "ch",
       state: "OK",
       population: 1000,
-      amount: 2100,
+      amount: 2,
+      trans_time:'1',
+      trans_num:1,
+      first_name:'string',
+      last_name:'string',
+      job:'string',
+      dob:'string'
     },
     {
       gender: "F",
@@ -47,7 +59,13 @@ export class DataService implements InMemoryDbService {
       city: "sh",
       state: "OK",
       population: 100,
-      amount: 100,
+      amount: 2,
+      trans_time:'1',
+      trans_num:1,
+      first_name:'string',
+      last_name:'string',
+      job:'string',
+      dob:'string'
     },
     {
       gender: "F",
@@ -56,7 +74,13 @@ export class DataService implements InMemoryDbService {
       city: "sh",
       state: "OK",
       population: 100,
-      amount: 100,
+      amount: 1,
+      trans_time:'1',
+      trans_num:1,
+      first_name:'string',
+      last_name:'string',
+      job:'string',
+      dob:'string'
     },
     {
       gender: "F",
@@ -65,7 +89,13 @@ export class DataService implements InMemoryDbService {
       city: "sh",
       state: "OK",
       population: 100,
-      amount: 100,
+      amount: 1,
+      trans_time:'1',
+      trans_num:1,
+      first_name:'string',
+      last_name:'string',
+      job:'string',
+      dob:'string'
     },
     {
       gender: "F",
@@ -74,7 +104,13 @@ export class DataService implements InMemoryDbService {
       city: "sh",
       state: "OK",
       population: 100,
-      amount: 100,
+      amount: 2,
+      trans_time:'1',
+      trans_num:1,
+      first_name:'string',
+      last_name:'string',
+      job:'string',
+      dob:'string'
     },
     {
       gender: "F",
@@ -83,7 +119,13 @@ export class DataService implements InMemoryDbService {
       city: "sh",
       state: "OK",
       population: 100,
-      amount: 100,
+      amount: 1,
+      trans_time:'1',
+      trans_num:1,
+      first_name:'string',
+      last_name:'string',
+      job:'string',
+      dob:'string'
     },
     {
       gender: "F",
@@ -92,7 +134,13 @@ export class DataService implements InMemoryDbService {
       city: "sh",
       state: "OK",
       population: 100,
-      amount: 100,
+      amount: 1,
+      trans_time:'1',
+      trans_num:1,
+      first_name:'string',
+      last_name:'string',
+      job:'string',
+      dob:'string'
     },
     {
       gender: "F",
@@ -101,7 +149,13 @@ export class DataService implements InMemoryDbService {
       city: "sh",
       state: "OK",
       population: 100,
-      amount: 100,
+      amount: 2,
+      trans_time:'1',
+      trans_num:1,
+      first_name:'string',
+      last_name:'string',
+      job:'string',
+      dob:'string'
     }
   ];
 
@@ -110,17 +164,32 @@ export class DataService implements InMemoryDbService {
     return { listOfData };
   }
 
-  getFilteredData(searchTerm: TransactionsItem): TransactionsItem[] {
-    return this.transactions.filter(transition => {
-      return (
-        (!searchTerm.gender || transition.gender.toLowerCase() === searchTerm.gender.toLowerCase()) &&
-        (!searchTerm.category || transition.category.toLowerCase().includes(searchTerm.category.toLowerCase())) &&
-        (!searchTerm.merchant || transition.merchant.toLowerCase().includes(searchTerm.merchant.toLowerCase())) &&
-        (!searchTerm.city || transition.city.toLowerCase().includes(searchTerm.city.toLowerCase())) &&
-        (!searchTerm.state || transition.state.toLowerCase().includes(searchTerm.state.toLowerCase()))&&
-        (!searchTerm.amount || transition.amount === searchTerm.amount) &&
-        (!searchTerm.amount || transition.amount === searchTerm.amount)
-      );
-    });
+  getFilteredData(searchTerm: TransactionsItem): TransactionsItemAll[] {
+    //参数改值的
+    //先对searchTerm进行处理，即null改成空格这些
+    //然后再加到api上获取数据
+    const requestBody : TransactionsItem = {
+      gender: searchTerm.gender || " ",
+      category: searchTerm.category || " ",
+      merchant: searchTerm.merchant || " ",
+      city: searchTerm.city || " ",
+      state: searchTerm.state || " ",
+      job:searchTerm.job || " ",
+      amount:searchTerm.amount || -1
+    }
+      return this.transactions.filter(transition => {
+        return (
+          (!searchTerm.gender || transition.gender.toLowerCase() === searchTerm.gender.toLowerCase()) &&
+          (!searchTerm.category || transition.category.toLowerCase().includes(searchTerm.category.toLowerCase())) &&
+          (!searchTerm.merchant || transition.merchant.toLowerCase().includes(searchTerm.merchant.toLowerCase())) &&
+          (!searchTerm.city || transition.city.toLowerCase().includes(searchTerm.city.toLowerCase())) &&
+          (!searchTerm.state || transition.state.toLowerCase().includes(searchTerm.state.toLowerCase()))&&
+          (!searchTerm.job || transition.job.toLowerCase().includes(searchTerm.job.toLowerCase())) &&
+          (!searchTerm.amount || transition.amount == searchTerm.amount)
+        );
+      });
+    }
+
+    
   }
-}
+

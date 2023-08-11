@@ -5,6 +5,7 @@
 
 [nz-form]:not(.ant-form-inline):not(.ant-form-vertical) {
   /* max-width: 1000px; */
+  margin-top: 8px;
 }
 
 button {
