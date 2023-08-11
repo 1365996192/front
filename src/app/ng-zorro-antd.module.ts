@@ -7,6 +7,8 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
 
 @NgModule({
   exports: [
@@ -16,7 +18,9 @@ import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
     NzInputModule,
     NzInputNumberModule,
     NzSelectModule,
-    NzPageHeaderModule
+    NzPageHeaderModule,
+    NzDividerModule,
+    NzRadioModule
   ]
 })
 export class DemoNgZorroAntdModule {

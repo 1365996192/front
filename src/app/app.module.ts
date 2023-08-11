@@ -20,6 +20,7 @@ import { DemoNgZorroAntdModule } from './ng-zorro-antd.module';
 import { DataDisplayComponent } from './data-display/data-display.component';
 import { NavigateMenuComponent } from './navigate-menu/navigate-menu.component';
 import { RegisterCardComponent } from './register-card/register-card.component';
+import { DataService } from './services/in-transactions-data.service';
 
 const antDesignIcons = AllIcons as {
   [key: string]: IconDefinition;
@@ -41,7 +42,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     HttpClientModule,
     BrowserAnimationsModule,
     DemoNgZorroAntdModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientInMemoryWebApiModule.forRoot(DataService, { dataEncapsulation: false })
   ],
   providers: [{ provide: NZ_ICONS, useValue: icons }],
   bootstrap: [AppComponent]
