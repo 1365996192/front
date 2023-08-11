@@ -3,7 +3,7 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators, UntypedFormControl, }
 import { Data } from '@angular/router';
 //获取数据服务
 import { DataService } from '../services/in-transactions-data.service';
-import { TransactionsItem, ColumnItem } from '../ulities/module'
+import { TransactionsItem, ColumnItem, TransactionsItemAll } from '../ulities/module'
 
 
 @Component({
@@ -17,16 +17,8 @@ export class DataDisplayComponent implements OnInit{
   constructor(private fb: UntypedFormBuilder,private dataService: DataService) {}
   
   validateForm!: UntypedFormGroup;
-  listOfData: TransactionsItem[] = [];
-  searchTerm: TransactionsItem = {
-    gender: '',
-    category: '',
-    merchant: '',
-    city: '',
-    state: '',
-    population: 0,
-    amount: 0
-  }; // 初始化查询条件对象
+  //后端拿到的数据，表单接收到的数据跟后端拿到的数据应该无关
+  listOfData: TransactionsItemAll[] = [];
 
   submitForm(): void {
     if (this.validateForm.valid) {
@@ -55,13 +47,13 @@ export class DataDisplayComponent implements OnInit{
   ngOnInit(): void {
     this.listOfData = this.dataService.createDb().listOfData;
     this.validateForm = this.fb.group({
-      gender: ['F', [Validators.required]],
+      gender: [null],
       category: [null],
       merchant: [null],
       city: [null],
       state: [null],
-      population: [null],
-      amount: [null]
+      job:[null],
+      amount:[null]
     });
   }
   //Table just use to display data
