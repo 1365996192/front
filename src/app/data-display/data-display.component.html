@@ -17,46 +17,68 @@
   </nz-form-item>
   <nz-form-item>
     <nz-form-label [nzSpan]="4">Category</nz-form-label>
-    <nz-form-control [nzSpan]="8" nzErrorTip="Please input your username!">
+    <nz-form-control [nzSpan]="8" nzErrorTip="Please enter a word or letter">
       <input
         nz-input
+        placeholder="Optional"
+        name="pattern"
+        pattern="^[A-Za-z]+$"
         formControlName="category"
-        placeholder="input placeholder"
       />
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
     <nz-form-label [nzSpan]="4">Merchant</nz-form-label>
-    <nz-form-control [nzSpan]="8" nzErrorTip="Please input your Password!">
+    <nz-form-control [nzSpan]="8" nzErrorTip="Please enter a word or letter">
       <input
         nz-input
+        placeholder="Optional"
+        name="pattern"
+        pattern="^[A-Za-z]+$"
         formControlName="merchant"
-        placeholder="input placeholder"
       />
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
     <nz-form-label [nzSpan]="4">City</nz-form-label>
-    <nz-form-control [nzSpan]="8" nzErrorTip="Please input your Password!">
-      <input nz-input formControlName="city" placeholder="input placeholder" />
+    <nz-form-control [nzSpan]="8" nzErrorTip="Please enter a word or letter">
+      <input
+        nz-input
+        placeholder="Optional"
+        name="pattern"
+        pattern="^[A-Za-z]+$"
+        formControlName="city"
+      />
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
     <nz-form-label [nzSpan]="4">State</nz-form-label>
-    <nz-form-control [nzSpan]="8" nzErrorTip="Please input your Password!">
-      <input nz-input formControlName="state" placeholder="input placeholder" />
+    <nz-form-control [nzSpan]="8" nzErrorTip="Please enter a word or letter">
+      <input
+        nz-input
+        placeholder="Optional"
+        name="pattern"
+        pattern="^[A-Za-z]+$"
+        formControlName="state"
+      />
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
     <nz-form-label [nzSpan]="4">Job</nz-form-label>
-    <nz-form-control [nzSpan]="8" nzErrorTip="Please input your Password!">
-      <input nz-input formControlName="job" placeholder="input placeholder" />
+    <nz-form-control [nzSpan]="8" nzErrorTip="Please enter a word or letter">
+      <input
+        nz-input
+        placeholder="Optional"
+        name="pattern"
+        pattern="^[A-Za-z]+$"
+        formControlName="job"
+      />
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-label [nzSpan]="4">Amount Level</nz-form-label>
+    <nz-form-label [nzSpan]="4">amountt Level</nz-form-label>
     <nz-form-control [nzSpan]="14">
-      <nz-radio-group formControlName="amount">
+      <nz-radio-group formControlName="amt">
         <label nz-radio-button [nzValue]="'1'">Low</label>
         <label nz-radio-button [nzValue]="'2'">High</label>
       </nz-radio-group>
@@ -93,7 +115,9 @@
       <td>{{ data.city }}</td>
       <td>{{ data.state }}</td>
       <td>{{ data.population }}</td>
-      <td>{{ data.amount == 2 ? "High" : "low" }}</td>
+      <td>{{ data.job }}</td>
+      <td>{{ data.dob }}</td>
+      <td>{{ data.amt == 2 ? "High" : "low" }}</td>
     </tr>
   </tbody>
 </nz-table>

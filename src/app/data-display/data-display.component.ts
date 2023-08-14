@@ -53,7 +53,7 @@ export class DataDisplayComponent implements OnInit{
       city: [null],
       state: [null],
       job:[null],
-      amount:[null]
+      amt:[null]
     });
   }
   //Table just use to display data
@@ -94,6 +94,9 @@ export class DataDisplayComponent implements OnInit{
     {name: 'city'},
     {name: 'state'},
     {name: 'population'},
-    {name: 'amount'}
+    {name: 'job'},
+    {name: 'dob'},
+    {name: 'amt'},
+    
   ];
 }

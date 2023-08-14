@@ -14,9 +14,24 @@ import { transition } from '@angular/animations';
 
 //   constructor(private http: HttpClient) { }
 
-//   getTransactions(): Observable<TransactionsItem[]> {
-//     return this.http.get<any[]>(`${this.baseUrl}/api/users`);
+//   getTransactions(): Observable<TransactionsItemAll[]> {
+//     return this.http.get<TransactionsItemAll[]>(`${this.baseUrl}/api/users`);
 //   }
+
+
+    // getFilteredData(queryParams: TransactionsItem) : Observable<TransactionsItemAll[]> {
+    //   const requestBody : TransactionsItem = {
+    //     gender: searchTerm.gender || " ",
+    //     category: searchTerm.category || " ",
+    //     merchant: searchTerm.merchant || " ",
+    //     city: searchTerm.city || " ",
+    //     state: searchTerm.state || " ",
+    //     job:searchTerm.job || " ",
+    //     amt:searchTerm.amt || -1
+    //   }
+
+    //   return this.http.get(`transaction/find`, requestBody);
+    // }
 // }
 
 //假数据
@@ -29,7 +44,7 @@ export class DataService implements InMemoryDbService {
       city: "sh",
       state: "OK",
       population: 100,
-      amount: 1,
+      amt: 1,
       trans_time:'1',
       trans_num:1,
       first_name:'string',
@@ -44,7 +59,7 @@ export class DataService implements InMemoryDbService {
       city: "ch",
       state: "OK",
       population: 1000,
-      amount: 2,
+      amt: 2,
       trans_time:'1',
       trans_num:1,
       first_name:'string',
@@ -59,7 +74,7 @@ export class DataService implements InMemoryDbService {
       city: "sh",
       state: "OK",
       population: 100,
-      amount: 2,
+      amt: 2,
       trans_time:'1',
       trans_num:1,
       first_name:'string',
@@ -74,7 +89,7 @@ export class DataService implements InMemoryDbService {
       city: "sh",
       state: "OK",
       population: 100,
-      amount: 1,
+      amt: 1,
       trans_time:'1',
       trans_num:1,
       first_name:'string',
@@ -89,7 +104,7 @@ export class DataService implements InMemoryDbService {
       city: "sh",
       state: "OK",
       population: 100,
-      amount: 1,
+      amt: 1,
       trans_time:'1',
       trans_num:1,
       first_name:'string',
@@ -104,7 +119,7 @@ export class DataService implements InMemoryDbService {
       city: "sh",
       state: "OK",
       population: 100,
-      amount: 2,
+      amt: 2,
       trans_time:'1',
       trans_num:1,
       first_name:'string',
@@ -119,7 +134,7 @@ export class DataService implements InMemoryDbService {
       city: "sh",
       state: "OK",
       population: 100,
-      amount: 1,
+      amt: 1,
       trans_time:'1',
       trans_num:1,
       first_name:'string',
@@ -134,7 +149,7 @@ export class DataService implements InMemoryDbService {
       city: "sh",
       state: "OK",
       population: 100,
-      amount: 1,
+      amt: 1,
       trans_time:'1',
       trans_num:1,
       first_name:'string',
@@ -149,7 +164,7 @@ export class DataService implements InMemoryDbService {
       city: "sh",
       state: "OK",
       population: 100,
-      amount: 2,
+      amt: 2,
       trans_time:'1',
       trans_num:1,
       first_name:'string',
@@ -168,15 +183,7 @@ export class DataService implements InMemoryDbService {
     //参数改值的
     //先对searchTerm进行处理，即null改成空格这些
     //然后再加到api上获取数据
-    const requestBody : TransactionsItem = {
-      gender: searchTerm.gender || " ",
-      category: searchTerm.category || " ",
-      merchant: searchTerm.merchant || " ",
-      city: searchTerm.city || " ",
-      state: searchTerm.state || " ",
-      job:searchTerm.job || " ",
-      amount:searchTerm.amount || -1
-    }
+    
       return this.transactions.filter(transition => {
         return (
           (!searchTerm.gender || transition.gender.toLowerCase() === searchTerm.gender.toLowerCase()) &&
@@ -185,7 +192,7 @@ export class DataService implements InMemoryDbService {
           (!searchTerm.city || transition.city.toLowerCase().includes(searchTerm.city.toLowerCase())) &&
           (!searchTerm.state || transition.state.toLowerCase().includes(searchTerm.state.toLowerCase()))&&
           (!searchTerm.job || transition.job.toLowerCase().includes(searchTerm.job.toLowerCase())) &&
-          (!searchTerm.amount || transition.amount == searchTerm.amount)
+          (!searchTerm.amt || transition.amt == searchTerm.amt)
         );
       });
     }
