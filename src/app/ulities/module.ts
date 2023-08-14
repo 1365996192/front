@@ -6,7 +6,7 @@ export interface TransactionsItem {
     city: string;
     state: string;
     job:string;
-    amount:number
+    amt:number
   }
 
   export interface TransactionsItemAll {
@@ -16,7 +16,7 @@ export interface TransactionsItem {
     city: string;
     state: string;
     population:number;
-    amount:number
+    amt:number
     trans_time:string;
     trans_num:number;
     first_name:string;
