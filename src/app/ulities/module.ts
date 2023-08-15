@@ -6,7 +6,8 @@ export interface TransactionsItem {
     city: string;
     state: string;
     job:string;
-    amt:number
+    amt:number;
+    [key: string]: string | number; // 添加索引签名
   }
 
   export interface TransactionsItemAll {
@@ -15,12 +16,12 @@ export interface TransactionsItem {
     merchant: string;
     city: string;
     state: string;
-    population:number;
+    cityPopulation:number;
     amt:number
-    trans_time:string;
-    trans_num:number;
-    first_name:string;
-    last_name:string;
+    transDateTransTime:string;
+    transNum:number;
+    first:string;
+    last:string;
     job:string;
     dob:string
   }
@@ -34,3 +35,13 @@ export  interface ColumnItem {
     // filterMultiple: boolean;
     // sortDirections: NzTableSortOrder[];
   }
+
+export interface stateSum {
+  state: string;
+  total_transaction: number
+}
+
+export interface pieData {
+  name:string;
+  value:number
+}
