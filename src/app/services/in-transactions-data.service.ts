@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { TransactionsItem, TransactionsItemAll } from '../ulities/module'
+import { stateSum, TransactionsItem, TransactionsItemAll } from '../ulities/module'
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { transition } from '@angular/animations';
 
@@ -10,32 +10,53 @@ import { transition } from '@angular/animations';
 })
 //真实API
 // export class DataService {
-//   private baseUrl = 'https://localhost:8080;
+//   private baseUrl = 'http://localhost:8080';
 
 //   constructor(private http: HttpClient) { }
 
+  // getSumDate(category:string){
+  //   switch(category){
+  //     case 'state'  :
+  //       return this.http.get<stateSum[]>(`${this.baseUrl}/transaction`)
+  //     case 'job'  :
+  //     /* 您可以有任意数量的 case 语句 */
+  //     default : /* 可选的 */
+  // }
+  // }
+
 //   getTransactions(): Observable<TransactionsItemAll[]> {
-//     return this.http.get<TransactionsItemAll[]>(`${this.baseUrl}/api/users`);
+//     return this.http.get<TransactionsItemAll[]>(`${this.baseUrl}/transaction`);
+//   }
+
+//   getDataFromRedirect(redirectUrl: string): Observable<any> {
+//     return this.http.get<any>(redirectUrl);
 //   }
 
 
-    // getFilteredData(queryParams: TransactionsItem) : Observable<TransactionsItemAll[]> {
-    //   const requestBody : TransactionsItem = {
-    //     gender: searchTerm.gender || " ",
-    //     category: searchTerm.category || " ",
-    //     merchant: searchTerm.merchant || " ",
-    //     city: searchTerm.city || " ",
-    //     state: searchTerm.state || " ",
-    //     job:searchTerm.job || " ",
-    //     amt:searchTerm.amt || -1
-    //   }
+//     getFilteredData(searchTerm: TransactionsItem) : Observable<TransactionsItemAll[]> {
+//       const requestParams : TransactionsItem = {
+//         gender: searchTerm.gender || " ",
+//         category: searchTerm.category || " ",
+//         merchant: searchTerm.merchant || " ",
+//         city: searchTerm.city || " ",
+//         state: searchTerm.state || " ",
+//         job:searchTerm.job || " ",
+//         amt:searchTerm.amt || -1,
+//       }
+//       let queryParams = new HttpParams()
+//       for(const key in requestParams){
+//         queryParams = queryParams.set(key, requestParams[key])
+//       }
+//       console.log("jinru");
+      
+//       return this.http.get<TransactionsItemAll[]>(`${this.baseUrl}/transaction/find`,{ params: queryParams});
 
-    //   return this.http.get(`transaction/find`, requestBody);
-    // }
-// }
+//       // return this.http.get(`transaction/find`, requestBody);
+//     }
 
 //假数据
 export class DataService implements InMemoryDbService {
+
   private transactions : TransactionsItemAll[] = [
     {
       gender: "F",
@@ -43,12 +64,12 @@ export class DataService implements InMemoryDbService {
       merchant: "Abbott-Rogan",
       city: "sh",
       state: "OK",
-      population: 100,
+      cityPopulation: 100,
       amt: 1,
-      trans_time:'1',
-      trans_num:1,
-      first_name:'string',
-      last_name:'string',
+      transDateTransTime:'1',
+      transNum:1,
+      first:'string',
+      last:'string',
       job:'string',
       dob:'string'
     },
@@ -58,12 +79,12 @@ export class DataService implements InMemoryDbService {
       merchant: "apple",
       city: "ch",
       state: "OK",
-      population: 1000,
-      amt: 2,
-      trans_time:'1',
-      trans_num:1,
-      first_name:'string',
-      last_name:'string',
+      cityPopulation: 100,
+      amt: 1,
+      transDateTransTime:'1',
+      transNum:1,
+      first:'string',
+      last:'string',
       job:'string',
       dob:'string'
     },
@@ -73,27 +94,12 @@ export class DataService implements InMemoryDbService {
       merchant: "Abbott-Rogan",
       city: "sh",
       state: "OK",
-      population: 100,
-      amt: 2,
-      trans_time:'1',
-      trans_num:1,
-      first_name:'string',
-      last_name:'string',
-      job:'string',
-      dob:'string'
-    },
-    {
-      gender: "F",
-      category: "work",
-      merchant: "Abbott-Rogan",
-      city: "sh",
-      state: "OK",
-      population: 100,
+      cityPopulation: 100,
       amt: 1,
-      trans_time:'1',
-      trans_num:1,
-      first_name:'string',
-      last_name:'string',
+      transDateTransTime:'1',
+      transNum:1,
+      first:'string',
+      last:'string',
       job:'string',
       dob:'string'
     },
@@ -103,12 +109,12 @@ export class DataService implements InMemoryDbService {
       merchant: "Abbott-Rogan",
       city: "sh",
       state: "OK",
-      population: 100,
+      cityPopulation: 100,
       amt: 1,
-      trans_time:'1',
-      trans_num:1,
-      first_name:'string',
-      last_name:'string',
+      transDateTransTime:'1',
+      transNum:1,
+      first:'string',
+      last:'string',
       job:'string',
       dob:'string'
     },
@@ -118,27 +124,12 @@ export class DataService implements InMemoryDbService {
       merchant: "Abbott-Rogan",
       city: "sh",
       state: "OK",
-      population: 100,
-      amt: 2,
-      trans_time:'1',
-      trans_num:1,
-      first_name:'string',
-      last_name:'string',
-      job:'string',
-      dob:'string'
-    },
-    {
-      gender: "F",
-      category: "work",
-      merchant: "Abbott-Rogan",
-      city: "sh",
-      state: "OK",
-      population: 100,
+      cityPopulation: 100,
       amt: 1,
-      trans_time:'1',
-      trans_num:1,
-      first_name:'string',
-      last_name:'string',
+      transDateTransTime:'1',
+      transNum:1,
+      first:'string',
+      last:'string',
       job:'string',
       dob:'string'
     },
@@ -148,12 +139,12 @@ export class DataService implements InMemoryDbService {
       merchant: "Abbott-Rogan",
       city: "sh",
       state: "OK",
-      population: 100,
+      cityPopulation: 100,
       amt: 1,
-      trans_time:'1',
-      trans_num:1,
-      first_name:'string',
-      last_name:'string',
+      transDateTransTime:'1',
+      transNum:1,
+      first:'string',
+      last:'string',
       job:'string',
       dob:'string'
     },
@@ -163,12 +154,42 @@ export class DataService implements InMemoryDbService {
       merchant: "Abbott-Rogan",
       city: "sh",
       state: "OK",
-      population: 100,
-      amt: 2,
-      trans_time:'1',
-      trans_num:1,
-      first_name:'string',
-      last_name:'string',
+      cityPopulation: 100,
+      amt: 1,
+      transDateTransTime:'1',
+      transNum:1,
+      first:'string',
+      last:'string',
+      job:'string',
+      dob:'string'
+    },
+    {
+      gender: "F",
+      category: "work",
+      merchant: "Abbott-Rogan",
+      city: "sh",
+      state: "OK",
+      cityPopulation: 100,
+      amt: 1,
+      transDateTransTime:'1',
+      transNum:1,
+      first:'string',
+      last:'string',
+      job:'string',
+      dob:'string'
+    },
+    {
+      gender: "F",
+      category: "work",
+      merchant: "Abbott-Rogan",
+      city: "sh",
+      state: "OK",
+      cityPopulation: 100,
+      amt: 1,
+      transDateTransTime:'1',
+      transNum:1,
+      first:'string',
+      last:'string',
       job:'string',
       dob:'string'
     }

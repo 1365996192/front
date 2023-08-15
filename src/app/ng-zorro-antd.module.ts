@@ -72,6 +72,7 @@ import { NzResizableModule } from 'ng-zorro-antd/resizable';
 import { NzPipesModule } from 'ng-zorro-antd/pipes';
 import { NzQRCodeModule } from 'ng-zorro-antd/qr-code';
 import { NzWaterMarkModule } from 'ng-zorro-antd/water-mark';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
   exports: [
@@ -145,7 +146,8 @@ import { NzWaterMarkModule } from 'ng-zorro-antd/water-mark';
     NzResizableModule,
     NzPipesModule,
     NzQRCodeModule,
-    NzWaterMarkModule
+    NzWaterMarkModule,
+    NgxEchartsModule
   ]
 })
 export class DemoNgZorroAntdModule {

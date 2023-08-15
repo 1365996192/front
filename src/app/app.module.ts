@@ -20,6 +20,7 @@ import { DemoNgZorroAntdModule } from './ng-zorro-antd.module';
 import { DataDisplayComponent } from './data-display/data-display.component';
 import { NavigateMenuComponent } from './navigate-menu/navigate-menu.component';
 import { RegisterCardComponent } from './register-card/register-card.component';
+import { DataAnalysisComponent } from './data-analysis/data-analysis.component';
 import { DataService } from './services/in-transactions-data.service';
 
 const antDesignIcons = AllIcons as {
@@ -32,7 +33,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     AppComponent,
     DataDisplayComponent,
     NavigateMenuComponent,
-    RegisterCardComponent
+    RegisterCardComponent,
+    DataAnalysisComponent
   ],
   //这里放组件，然后其他文件从这个module.ts来引入？用了generate的话这里会自动添加
   imports: [
