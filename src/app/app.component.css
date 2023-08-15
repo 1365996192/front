@@ -1,3 +1,10 @@
 .container {
   background-color: cornflowerblue;
 }
+
+.site-page-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 可根据需要添加其他样式 */
+}

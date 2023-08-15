@@ -1,62 +1,40 @@
-import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators, UntypedFormControl, } from '@angular/forms';
-import { Data } from '@angular/router';
-//获取数据服务
-import { DataService } from '../services/in-transactions-data.service';
-import { TransactionsItem, ColumnItem, TransactionsItemAll } from '../ulities/module'
+import { Component } from '@angular/core';
 
+import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
+
+// interface DataItem {
+//   name: string;
+//   age: number;
+//   address: string;
+// }
+
+interface TransactionsItem {
+  gender: string;
+  category: string;
+  merchant: string;
+  city: string;
+  state: string;
+  population: number;
+  amount: number;
+}
+
+interface ColumnItem {
+  name: string;
+  // sortOrder: NzTableSortOrder | null;
+  // sortFn: NzTableSortFn<TransactionsItem> | null;
+  // listOfFilter: NzTableFilterList;
+  // filterFn: NzTableFilterFn<TransactionsItem> | null;
+  // filterMultiple: boolean;
+  // sortDirections: NzTableSortOrder[];
+}
 
 @Component({
   selector: 'app-data-display',
   templateUrl: './data-display.component.html',
   styleUrls: ['./data-display.component.css']
 })
-export class DataDisplayComponent implements OnInit{
-
+export class DataDisplayComponent {
   
-  constructor(private fb: UntypedFormBuilder,private dataService: DataService) {}
-  
-  validateForm!: UntypedFormGroup;
-  //后端拿到的数据，表单接收到的数据跟后端拿到的数据应该无关
-  listOfData: TransactionsItemAll[] = [];
-
-  submitForm(): void {
-    if (this.validateForm.valid) {
-      console.log('submit', this.validateForm.value);
-      this.listOfData = this.dataService.getFilteredData(this.validateForm.value);
-    } else {
-      Object.values(this.validateForm.controls).forEach(control => {
-        if (control.invalid) {
-          control.markAsDirty();
-          control.updateValueAndValidity({ onlySelf: true });
-        }
-      });
-    }
-  }
-
-  resetForm(): void {
-    this.validateForm.reset();
-    this.listOfData = this.dataService.createDb().listOfData;
-  }
-
-  // get isHorizontal(): boolean {
-  //   return this.validateForm.controls['formLayout']?.value === 'horizontal';
-  // }
-
-
-  ngOnInit(): void {
-    this.listOfData = this.dataService.createDb().listOfData;
-    this.validateForm = this.fb.group({
-      gender: [null],
-      category: [null],
-      merchant: [null],
-      city: [null],
-      state: [null],
-      job:[null],
-      amt:[null]
-    });
-  }
-  //Table just use to display data
   listOfColumn: ColumnItem[] = [
     {
       name: 'Gender'
@@ -94,9 +72,44 @@ export class DataDisplayComponent implements OnInit{
     {name: 'city'},
     {name: 'state'},
     {name: 'population'},
-    {name: 'job'},
-    {name: 'dob'},
-    {name: 'amt'},
-    
+    {name: 'amount'}
+  ];
+  listOfData: TransactionsItem[] = [
+    {
+      gender: "F",
+      category: "entertainment",
+      merchant: "Abbott-Rogan",
+      city: "sh",
+      state: "OK",
+      population: 100,
+      amount: 100,
+    },
+    {
+      gender: "F",
+      category: "entertainment",
+      merchant: "Abbott-Rogan",
+      city: "sh",
+      state: "OK",
+      population: 100,
+      amount: 100,
+    },
+    {
+      gender: "F",
+      category: "entertainment",
+      merchant: "Abbott-Rogan",
+      city: "sh",
+      state: "OK",
+      population: 100,
+      amount: 100,
+    },
+    {
+      gender: "F",
+      category: "entertainment",
+      merchant: "Abbott-Rogan",
+      city: "sh",
+      state: "OK",
+      population: 100,
+      amount: 100,
+    }
   ];
 }

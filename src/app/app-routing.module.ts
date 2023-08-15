@@ -3,14 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { DataDisplayComponent } from './data-display/data-display.component';
 import { RegisterCardComponent } from './register-card/register-card.component';
 import { CancelCardComponent } from './cancel-card/cancel-card.component';
-import { DataAnalysisComponent } from './data-analysis/data-analysis.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
-  { path: 'datas', component: DataDisplayComponent},
-  { path: 'register', component: RegisterCardComponent},
-  { path: 'cancle', component: RegisterCardComponent},
-  { path: 'analysis', component: DataAnalysisComponent}
+  { path: 'datas', component: DataDisplayComponent },
+  { path: 'register', component: RegisterCardComponent },
+  { path: 'cancel', component: CancelCardComponent },
 ];
 
 @NgModule({
